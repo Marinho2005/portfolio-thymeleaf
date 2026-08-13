@@ -1,0 +1,73 @@
+# =============================================================
+#  SEGREDOS E CREDENCIAIS — NUNCA COMMITAR
+#  =============================================================
+#  Arquivos abaixo contêm senhas, chaves e dados sensíveis de
+#  banco de dados / Supabase. JAMAIS envie ao GitHub.
+#  Use o template `application.properties.example` para criar
+#  o seu próprio arquivo de configuração local.
+application.properties
+src/main/resources/application.properties
+target/classes/application.properties
+
+# Arquivos de ambiente / secrets (caso venham a ser usados)
+.env
+.env.*
+*.pem
+*.key
+*.jks
+*.p12
+secrets/
+
+# =============================================================
+#  Java / Spring Boot / Maven
+#  =============================================================
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+hs_err_pid*
+
+# =============================================================
+#  Maven Wrapper
+#  =============================================================
+.mvn/wrapper/maven-wrapper.jar
+
+# =============================================================
+#  IDEs / Editores
+#  =============================================================
+### Eclipse / STS ###
+.classpath
+.project
+.settings/
+.apt_generated
+.factorypath
+.springBeans
+.sts4-cache
+bin/
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### NetBeans ###
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### VS Code ###
+.vscode/
+*.code-workspace
+
+### macOS ###
+.DS_Store
+
+### Windows ###
+Thumbs.db
+desktop.ini

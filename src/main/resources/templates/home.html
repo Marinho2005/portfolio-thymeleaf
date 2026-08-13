@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Página Inicial</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+                /* small enhancement for backdrop on some browsers */
+                .backdrop-blur-md { backdrop-filter: blur(6px); }
+        </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
+    <div class="max-w-xl w-full bg-white/75 backdrop-blur-md rounded-2xl shadow-xl p-8 ring-1 ring-gray-100">
+        <header class="mb-6">
+            <h1 class="text-3xl font-extrabold text-gray-900">Página Inicial</h1>
+            <p class="mt-1 text-gray-600">Bem-vindo à sua aplicação demo</p>
+        </header>
+        <main>
+            <h2 class="text-2xl font-semibold text-indigo-600">Bem-vindo, <span th:text="${nome}">Victor</span></h2>
+            <p class="mt-4 text-gray-700">Este é o seu painel inicial — personalize conforme necessário.</p>
+            <div class="mt-6 flex gap-3">
+                <a href="/portfolio" class="px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700">Explorar</a>
+                <a href="/configuracoes" class="px-4 py-2 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-50">Configurações</a>
+            </div>
+        </main>
+        <footer class="mt-6 text-sm text-gray-500">© 2026 Demo</footer>
+    </div>
+</body>
+</html>
