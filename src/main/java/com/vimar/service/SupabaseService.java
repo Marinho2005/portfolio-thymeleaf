@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vimar.dto.SettingsForm;
 import com.vimar.dto.ProjectForm;
+import com.vimar.dto.ContactForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -85,6 +86,12 @@ public class SupabaseService {
             form.setDisplayName(row.path("display_name").asText(null));
             form.setEmail(row.path("email").asText(null));
             form.setTheme(row.path("theme").asText("light"));
+            form.setPhotoUrl(row.path("photo_url").asText(null));
+            form.setBio(row.path("bio").asText(null));
+            form.setGithubUrl(row.path("github_url").asText(null));
+            form.setLinkedinUrl(row.path("linkedin_url").asText(null));
+            form.setInstagramUrl(row.path("instagram_url").asText(null));
+            form.setTwitterUrl(row.path("twitter_url").asText(null));
             return Optional.of(form);
         } catch (Exception e) {
             logger.error("Failed to read settings", e);
@@ -102,6 +109,12 @@ public class SupabaseService {
             body.put("display_name", form.getDisplayName());
             body.put("email", form.getEmail());
             body.put("theme", form.getTheme());
+            body.put("photo_url", form.getPhotoUrl());
+            body.put("bio", form.getBio());
+            body.put("github_url", form.getGithubUrl());
+            body.put("linkedin_url", form.getLinkedinUrl());
+            body.put("instagram_url", form.getInstagramUrl());
+            body.put("twitter_url", form.getTwitterUrl());
             String json = mapper.writeValueAsString(body);
 
             Optional<String> existingId = findSettingsId();
@@ -145,6 +158,32 @@ public class SupabaseService {
         } catch (Exception e) {
             logger.error("Failed to find settings id", e);
             return Optional.empty();
+        }
+    }
+
+    // ======================= CONTACT =======================
+
+    public boolean sendContactMessage(ContactForm form) {
+        if (!configured()) {
+            logger.warn("Supabase URL or key not configured. Skipping contact message.");
+            return false;
+        }
+        try {
+            Map<String, Object> body = new HashMap<>();
+            body.put("name", form.getName());
+            body.put("email", form.getEmail());
+            body.put("message", form.getMessage());
+            String json = mapper.writeValueAsString(body);
+            HttpRequest req = baseRequest(endpoint("contact_messages"))
+                    .header("Prefer", "return=representation")
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+            HttpResponse<String> resp = send(req);
+            logger.info("contact message: {} {}", resp.statusCode(), resp.body());
+            return resp.statusCode() >= 200 && resp.statusCode() < 300;
+        } catch (Exception e) {
+            logger.error("Failed to send contact message", e);
+            return false;
         }
     }
 

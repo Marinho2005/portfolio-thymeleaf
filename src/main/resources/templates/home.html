@@ -6,26 +6,25 @@
   <title>Portfólio - Início</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .backdrop-blur-md { backdrop-filter: blur(8px); }
-    body { background-color: #0b1020; }
+    body { background-color: #0a0a0a; }
   </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 flex items-center justify-center p-6 relative overflow-hidden">
-  <div class="absolute -top-32 -left-32 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl"></div>
-  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-violet-600/20 rounded-full blur-3xl"></div>
-
-  <div class="relative max-w-xl w-full bg-white/5 backdrop-blur-md rounded-3xl shadow-2xl p-10 ring-1 ring-white/10 text-center">
-    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-indigo-500 to-violet-600 rounded-2xl flex items-center justify-center text-3xl font-extrabold text-white shadow-lg mb-6">
+<body class="min-h-screen bg-black flex items-center justify-center p-6">
+  <div class="max-w-xl w-full bg-gray-900 border border-red-700/50 rounded-lg shadow-2xl p-12 text-center">
+    <div class="w-20 h-20 mx-auto bg-red-600 rounded-lg flex items-center justify-center text-3xl font-extrabold text-white shadow-lg mb-6">
       V
     </div>
-    <h1 class="text-3xl font-extrabold text-white">Bem-vindo, <span th:text="${nome}">Victor</span></h1>
-    <p class="mt-3 text-indigo-200/80">Personalize o seu portfólio e mostre seus projetos ao mundo.</p>
+    <h1 class="text-3xl font-extrabold text-white">Bem-vindo</h1>
+    <p class="mt-3 text-gray-400">Explore meu portfólio, conheça meus projetos e entre em contato.</p>
 
-    <a href="/configuracoes" class="mt-8 inline-block px-8 py-3 bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold rounded-xl shadow-lg hover:from-indigo-400 hover:to-violet-500 transition">
-      Customize seu portfólio
+    <a href="/portfolio" class="mt-8 inline-block px-8 py-3 bg-red-600 text-white font-semibold rounded hover:bg-red-700 transition shadow-lg">
+      Visualizar portfólio
     </a>
 
-    <footer class="mt-10 text-sm text-slate-400">© 2026 - Feito com Java, Spring Boot &amp; Supabase</footer>
+    <footer class="mt-10 text-sm text-gray-500">
+      © 2026 - Feito com Java, Spring Boot &amp; Supabase ·
+      <a href="/configuracoes" class="text-red-600 hover:text-red-500">Configurações</a>
+    </footer>
   </div>
 </body>
 </html>

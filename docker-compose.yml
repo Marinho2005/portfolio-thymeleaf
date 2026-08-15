@@ -6,6 +6,6 @@ services:
       - "8080:8080"
     env_file: .env
     environment:
-      # Flyway desabilitado: flyway-core 10.8.1 nao suporta PostgreSQL 17 (Supabase)
-      SPRING_FLYWAY_ENABLED: "false"
+      # Flyway: schema ja existe no Supabase -> baseline em V1, V2+ aplica
+      SPRING_FLYWAY_BASELINE_ON_MIGRATE: "true"
     restart: unless-stopped
