@@ -1,0 +1,22 @@
+# =============================================================
+#  Docker / build context — excluídos da imagem
+#  =============================================================
+
+# Credenciais locais — NUNCA entram na imagem
+src/main/resources/application.properties
+.env
+.env.*
+
+# Build e ferramentas
+target/
+.git/
+.gitignore
+.mvn/
+mvnw
+mvnw.cmd
+db/
+HELP.md
+README.md
+.vscode/
+.idea/
+*.md

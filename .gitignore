@@ -12,6 +12,7 @@ target/classes/application.properties
 # Arquivos de ambiente / secrets (caso venham a ser usados)
 .env
 .env.*
+!.env.example
 *.pem
 *.key
 *.jks
