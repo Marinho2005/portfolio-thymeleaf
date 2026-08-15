@@ -69,6 +69,27 @@ Um portfólio web em desenvolvimento, construído com **Spring Boot** e **Thymel
 
 5. Acesse em: <http://localhost:8080>
 
+### 🐳 Rodando com Docker
+
+1. Crie o arquivo de credenciais a partir do modelo (preencha com seus valores):
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Suba a aplicação:
+
+   ```bash
+   docker compose up --build
+   ```
+
+3. Acesse em: <http://localhost:8080>
+
+> O `.env` está no `.gitignore` e **nunca** deve ir pro GitHub. O `.dockerignore`
+> também exclui o `application.properties` da imagem — as credenciais vivem apenas
+> no `.env` local, mapeadas como variáveis de ambiente (Spring Boot faz o binding
+> automático: `SPRING_DATASOURCE_PASSWORD` → `spring.datasource.password`).
+
 ## 🔒 Segurança
 
 ⚠️ **Importante:** o arquivo `application.properties` contém senhas e chaves sensíveis e está **ignorado no `.gitignore`** — ele **não** deve ser enviado ao GitHub. Sempre use o template `application.properties.example` como referência e mantenha suas credenciais em sigilo.

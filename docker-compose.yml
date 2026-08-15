@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    container_name: portfolio-thymeleaf
+    ports:
+      - "8080:8080"
+    env_file: .env
+    environment:
+      # Flyway desabilitado: flyway-core 10.8.1 nao suporta PostgreSQL 17 (Supabase)
+      SPRING_FLYWAY_ENABLED: "false"
+    restart: unless-stopped
