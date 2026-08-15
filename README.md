@@ -21,9 +21,10 @@ Um portfólio web em desenvolvimento, construído com **Spring Boot** e **Thymel
 
 | Rota | Descrição |
 |------|-----------|
-| `/` | Página inicial (home) |
-| `/portfolio` | Exibição dos projetos do portfólio |
-| `/configuracoes` | Configurações de perfil (salva via API REST no Supabase) |
+| `/` | Página inicial (home) — botão para personalizar o portfólio |
+| `/portfolio` | Portfólio com projetos vindos do banco (Supabase) |
+| `/configuracoes` | Configurações de perfil (CRUD no Supabase) |
+| `/admin/projetos` | CRUD de projetos (listar, criar, editar, excluir) |
 
 ## 🛠️ Stack
 
@@ -103,9 +104,9 @@ Um portfólio web em desenvolvimento, construído com **Spring Boot** e **Thymel
 ## 🗺️ Roadmap (próximos passos)
 
 - [x] Estrutura base com Spring Boot + Thymeleaf
-- [x] Página de portfólio com dados estáticos
-- [x] Integração inicial com Supabase (persistência de configurações)
-- [ ] Conectar o portfólio ao banco (buscar projetos reais)
+- [x] Página de portfólio com dados do banco (Supabase)
+- [x] Integração com Supabase (persistência de configurações)
+- [x] CRUD de projetos via área administrativa
 - [ ] Formulário de contato funcional
 - [ ] Reativar o Flyway para migrações automáticas
 - [ ] Melhorias de UI/UX e responsividade

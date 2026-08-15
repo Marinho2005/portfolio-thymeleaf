@@ -5,37 +5,46 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Configurações</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #0b1020; }
+  </style>
 </head>
-<body class="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-  <div class="max-w-2xl w-full bg-white rounded-2xl shadow p-8">
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 flex items-center justify-center p-6 relative overflow-hidden">
+  <div class="absolute -top-32 -right-32 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-violet-600/20 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-2xl w-full bg-white/5 backdrop-blur-md rounded-3xl shadow-2xl p-8 ring-1 ring-white/10">
     <header class="mb-6 flex items-center justify-between">
-      <h1 class="text-2xl font-bold">Configurações</h1>
-      <a href="/" class="text-sm text-gray-600 hover:text-gray-900">Voltar</a>
+      <h1 class="text-2xl font-bold text-white">Configurações</h1>
+      <a href="/" class="text-sm text-indigo-300 hover:text-indigo-200">← Voltar</a>
     </header>
 
+    <div th:if="${message}" th:classappend="${messageType != null && messageType == 'error'} ? 'bg-red-500/10 text-red-300 ring-red-500/30' : 'bg-emerald-500/10 text-emerald-300 ring-emerald-500/30'"
+         class="p-3 rounded-lg ring-1 mb-4">[[${message}]]</div>
+
     <form th:action="@{/configuracoes}" method="post" class="grid grid-cols-1 gap-4">
-      <div th:if="${message}" class="p-3 rounded bg-green-50 text-green-800">[[${message}]]</div>
-      <label class="text-sm text-gray-700">Nome de exibição
-        <input name="displayName" th:value="${displayName}" class="mt-1 block w-full p-3 border rounded-lg" />
+      <label class="text-sm text-slate-300">Nome de exibição
+        <input name="displayName" th:value="${displayName}" placeholder="Seu Nome" class="mt-1 block w-full p-3 bg-slate-900/60 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
       </label>
 
-      <label class="text-sm text-gray-700">Email
-        <input name="email" th:value="${email}" class="mt-1 block w-full p-3 border rounded-lg" />
+      <label class="text-sm text-slate-300">Email
+        <input name="email" th:value="${email}" placeholder="seu@exemplo.com" class="mt-1 block w-full p-3 bg-slate-900/60 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
       </label>
 
-      <label class="text-sm text-gray-700">Tema
-        <select name="theme" th:value="${theme}" class="mt-1 block w-full p-3 border rounded-lg">
-          <option value="light">Claro</option>
-          <option value="dark">Escuro</option>
+      <label class="text-sm text-slate-300">Tema
+        <select name="theme" class="mt-1 block w-full p-3 bg-slate-900/60 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <option value="light" th:selected="${theme == 'light'}">Claro</option>
+          <option value="dark" th:selected="${theme == 'dark'}">Escuro</option>
         </select>
       </label>
 
-      <div class="pt-4 flex justify-end">
-        <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg">Salvar</button>
+      <div class="pt-4 flex flex-wrap gap-3">
+        <button type="submit" class="px-6 py-2.5 bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold rounded-xl hover:from-indigo-400 hover:to-violet-500 transition">Salvar</button>
+        <a href="/admin/projetos" class="px-6 py-2.5 bg-white/10 text-white rounded-xl hover:bg-white/20 transition">Gerenciar projetos</a>
       </div>
     </form>
 
-    <footer class="mt-6 text-sm text-gray-500">As configurações aqui são apenas demonstrativas.</footer>
+    <footer class="mt-6 text-sm text-slate-400">Suas configurações são salvas no banco e preenchidas automaticamente.</footer>
   </div>
 </body>
 </html>
